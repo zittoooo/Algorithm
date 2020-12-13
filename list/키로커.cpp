@@ -1,36 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-void circularNext(list<int> &li, list<int>::iterator &iter)
+using namespace std;
+list<char> L;
+int main()
 {
-	iter =  std::next(iter) == li.end() ? li.begin() : std::next(iter);
-}
-list<int> lst;
-list<int>::iterator iter;
-int N, K;
-int main() {
-	ios_base::sync_with_stdio(0);
+	ios::sync_with_stdio(0);
 	cin.tie(0);
+	int num;
 
-	cin >> N;
-	for (int i = 0; i < N; i++) {
-		lst.push_back(i + 1);
-	}
-	iter = lst.begin();
-	cin >> K;
-	cout << '<';
-	for (int i = 0; i < N; i++)
+	cin >> num;
+	while (num--)
 	{
-		for (int i = 0; i < K-1; i++)
+		list<char>::iterator it = L.end();
+		string str;
+		cin >> str;
+		for (int i = 0; i < str.length(); i++)
 		{
-			circularNext(lst, iter);
+			if (str[i] == '<')
+			{
+				if (it == L.begin())
+					continue;
+				it--;
+			}
+			else if (str[i] == '>')
+			{
+				if (it == L.end())
+					continue;
+				it++;
+			}
+			else if (str[i] == '-')
+			{
+				if (it == L.begin())
+					continue;
+				it = L.erase(--it);
+			}
+			else
+				L.insert(it, str[i]);
 		}
-		cout << *iter;
-		if (i < N - 1)
-			cout << ", ";
-		iter = lst.erase(iter);
-		if (iter == lst.end())
-			iter = lst.begin();
+		for (auto e : L)
+			cout << e;
+		cout << '\n';
+		L.clear();
 	}
-	cout << '>';
 }

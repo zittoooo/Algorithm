@@ -37,7 +37,6 @@ int main()
 				cursor--;
 				cursor = L.erase(cursor);
 			}
-
 		}
 		else {  // P
 			char ch;
@@ -45,7 +44,6 @@ int main()
 			L.insert(cursor, ch);
 		}
 	}
-
 	for(auto e : L)
 		cout << e;
 }

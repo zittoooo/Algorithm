@@ -1,4 +1,4 @@
-// 리모컨
+// 리모컨 https://www.codeup.kr/problem.php?id=3120
 #include <iostream>
 #include <queue>
 using namespace std;

@@ -6,8 +6,7 @@ int alpa[30] = {-1,};
 int main()
 {
     string str;
-    for (int i = 0; i < 30; i++)
-        alpa[i] = -1;
+    fill_n(alpa, 30, -1);
     cin >> str;
     for (int i = 0; i < str.length(); i++)
     {

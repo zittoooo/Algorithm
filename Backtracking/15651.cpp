@@ -1,57 +1,30 @@
-// N과 M (3) 
 #include <iostream>
 using namespace std;
-int arr[8];
-bool isused[8];
-int n, m;
 
-void    func(int k)
+int N, M;
+int arr[10];
+bool used[10];
+
+void func(int depth)
 {
-    if (k == m)
+    if (depth == M)
     {
-        for (int i = 0; i < m; i++)
-            cout << arr[i] << ' ';
+        for (int i = 0; i < M; i++)
+            cout << arr[i] << " ";
         cout << "\n";
-        return ;
+        return;
     }
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= N; i++)
     {
-        if (!isused[i])
-        {
-            arr[k] = i;
-            func(k+1);
-            isused[i] = 0;
-        }
+        arr[depth] = i;
+        func(depth + 1);
     }
 }
 
-int main()
-{
+int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    cin >> n >> m;
+    cin >> N >> M;
     func(0);
+    return 0;
 }
-
-/*
-입력
-4 2
-
-출력
-1 1
-1 2
-1 3
-1 4
-2 1
-2 2
-2 3
-2 4
-3 1
-3 2
-3 3
-3 4
-4 1
-4 2
-4 3
-4 4
-*/

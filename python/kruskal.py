@@ -13,6 +13,7 @@ def union(parent, a, b):
     else:
         parent[a] = b
 
+# 노드의 개수와 간선의 개수 입력받기
 v, e = map(int, input().split())
 parent = [0] * (v+1)
 edges = []  # 모든 간선을 담을 리스트

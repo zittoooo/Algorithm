@@ -1,0 +1,21 @@
+def solution(n, s, a, b, fares):  # n : 지점 개수 / s : 출발지점 / a : A의 도착지점 / b : B의 도착지점
+    answer = 1e9
+    INF = int(1e9)
+    dist = [[1e9] * (n+1) for _ in range(n+1)]  # 최단 거리 저장 배열
+    
+    for fare in fares:
+        c, d, f = fare
+        dist[c][d] = f
+        dist[d][c] = f
+    
+    for i in range(1, n+1):
+        dist[i][i] = 0
+    
+    for k in range(1, n+1):
+        for i in range(1, n+1):
+            for j in range(1, n+1):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+    
+    for k in range(1, n+1):
+        answer = min(answer, dist[s][k] + dist[k][a] + dist[k][b])
+    return answer
